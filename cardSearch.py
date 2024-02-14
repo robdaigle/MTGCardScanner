@@ -10,13 +10,16 @@ from mtgsdk import Changelog
 import json
 import requests
 
-cardname = input('Please enter a card name to look up: ')
 
-#Pull list of matching cards
+def searchbyname():
+    cardname = input('Please enter a card name to look up: ')
 
-cardlistnames = Card.where(name=cardname).all()
+    #Pull list of matching cards
 
-for i in cardlistnames:
-    print(i.name, i.set_name, i.multiverse_id, i.image_url) 
+    cardlistnames = Card.where(name=cardname).all()
+
+    #for i in cardlistnames:
+        #print(i.name, i.set_name, i.multiverse_id, i.image_url) 
+    return cardlistnames
 
 
