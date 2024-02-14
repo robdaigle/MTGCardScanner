@@ -1,5 +1,6 @@
 #This is a basic script to be run onboard the Pi for taking a test picture
-
+import picamera2
+import picamera
 from picamera2 import Picamera2, Preview
 import time
 picam2 = Picamera2()
