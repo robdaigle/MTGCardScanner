@@ -22,4 +22,15 @@ def searchbyname():
         #print(i.name, i.set_name, i.multiverse_id, i.image_url) 
     return cardlistnames
 
+def searchbyset():
+    setname = input('Please enter a set name to look up: ')
 
+    #Need to add translation table to convert set names to the set codes
+
+    #Pull list of matching cards
+
+    cardlistnames = Card.where(set=setname).all()
+
+    #for i in cardlistnames:
+        #print(i.name, i.set_name, i.multiverse_id, i.image_url) 
+    return cardlistnames
