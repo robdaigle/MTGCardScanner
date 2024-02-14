@@ -15,9 +15,9 @@ def focusing(val):
 	data1 = (value >> 8) & 0x3f
 	data2 = value & 0xf0
        	# time.sleep(0.5)
-        print("focus value: {}".format(val))
+    print("focus value: {}".format(val))
        # bus.write_byte_data(0x0c,data1,data2)
-	os.system("i2cset -y 0 0x0c %d %d" % (data1,data2))
+os.system("i2cset -y 0 0x0c %d %d" % (data1,data2))
 	
 def sobel(img):
 	img_gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
@@ -49,19 +49,19 @@ if __name__ == "__main__":
 	camera.start_preview()
 	#set camera resolution to 640x480(Small resolution for faster speeds.)
 	camera.resolution = (640, 480)
-        time.sleep(0.1)
-	print("Start focusing")
+    time.sleep(0.1)
+print("Start focusing")
 	
-	max_index = 10
-	max_value = 0.0
-	last_value = 0.0
-	dec_count = 0
-	focal_distance = 10
+max_index = 10
+max_value = 0.0
+last_value = 0.0
+dec_count = 0
+focal_distance = 10
 
 
         
 
-	while True:
+while True:
 	    #Adjust focus
 		focusing(focal_distance)
 		#Take image and calculate image clarity
@@ -87,15 +87,15 @@ if __name__ == "__main__":
 			break
 
     #Adjust focus to the best
-	focusing(max_index)
-	time.sleep(1)
+focusing(max_index)
+time.sleep(1)
 	#set camera resolution to 2592x1944
-	camera.resolution = (1920,1080)
+camera.resolution = (1920,1080)
 	#save image to file.
-	camera.capture("test.jpg")
-	print("max index = %d,max value = %lf" % (max_index,max_value))
+camera.capture("test.jpg")
+print("max index = %d,max value = %lf" % (max_index,max_value))
 	#while True:
 	#	time.sleep(1)
 		
-	camera.stop_preview()
-	camera.close()
+camera.stop_preview()
+camera.close()
